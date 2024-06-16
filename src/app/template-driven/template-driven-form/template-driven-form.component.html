@@ -1,14 +1,17 @@
 <!-- remember to import FormsModule and #registerForm is variable jo ki variable jaisa usko ts m pass krne k liye function banaya -->
  <!-- ngForm is directive jo angualr ne banaya hai jisse form json m dikhta hai and ngSubmit is event -->
-<form #registerForm="ngForm" (ngSubmit)="submitForm(registerForm)" class="form">
+<!-- submitForm(registerForm) ismei hamne registerForm as a paramter pass kiya tha kyuki hamko ngForm angular ka json banake de rha tha lekin abi hamne KHUDKA JSON ts mei banaya so banana in a box ka use kiya aur fir ye parameter pass krne ki jarurat nhi ,hamne khudka json isliye banaya kyuki HAM DEFAULTVALUES se initialise kr skte hai-->
+
+ <form #registerForm="ngForm" (ngSubmit)="submitForm()" class="form">
     <!-- username(text),email(text),gender(radiobutton) branch(dropdown),submit(btn)-->
      <div class="d-flex d-col">
         <label for="username">Username</label>
-        <input class="form-control" type="text"  id="username" name="username" placeholder="Enter username...">
-     </div>
+        <input class="form-control" type="text"  id="username" name="username" [(ngModel)]="form.username" placeholder="Enter username..."  required >
+        <p style="color: red;" *ngIf="registerForm.controls['username']?.touched && registerForm.controls['username']?.invalid">Enter valid username !!</p>
+     </div> 
      <div class="d-flex d-col">
         <label for="email">Email</label>
-        <input class="form-control" type="text" id="email" placeholder="Enter email...">
+        <input class="form-control" type="text" id="email" name="email" required email [(ngModel)]="form.email" placeholder="Enter email...">
     </div>
      
     <div class="d-flex d-col ">
@@ -16,32 +19,33 @@
             <label for="gender">Select Gender</label>
         </div>
         <div>
-            <input type="radio" id="gender">
-            <label for="gender">Male</label>
-            <input type="radio" id="gender">
+            <input type="radio" id="gender" name="gender" [(ngModel)]="form.gender" value="Male" ngModel>
+            <label for="gender" >Male</label>
+            <input type="radio" name="gender" [(ngModel)]="form.gender" value="Female" ngModel id="gender">
             <label for="gender">Female</label>
         </div>
     </div >
-    
-    <div class="d-flex d-col">
-     <label for="email">Email</label>
-     <input class="form-control" type="text" id="email" placeholder="Enter email...">
-    </div>
 
     <div class="d-flex d-col">
-        <label for="email">Address</label>
-        <textarea class="form-control" type="text" rows="5" cols="40" id="email" placeholder="Enter Address..."></textarea>
+        <label for="address">Address</label>
+        <textarea class="form-control" type="text" rows="5" cols="40" id="address" name="address" [(ngModel)]="form.address"  placeholder="Enter Address..."></textarea>
        </div>
      
     <div class="d-flex d-col">
     <label for="branch">Select Branch</label>
-     <select name="" id="branch">
-        <option value="">CMPN</option>
-        <option value="">IT</option>
-        <option value="">EXTC</option>
-        <option value="">AIDS</option>
+    <!-- ye below is one way to give defaultSelectedValue but 2nd way(this is better) to create own JSON -->
+    <!-- <select id="branch" name="branch" [ngModel]="defaultSelectedValue" >  -->
+     <select id="branch" name="branch" [(ngModel)]="form.branch" >
+        <option value="CMPN">CMPN</option>
+        <option value="IT">IT</option>
+        <option value="EXTC">EXTC</option>
+        <option value="AIDS">AIDS</option>
      </select>
     </div>
 
      <button type="submit" class="btn btn-dark">Submit</button>
+
+     <!-- ye niche hame dikhega json m form jo hamne json m ts m banaya tha -->
+     {{form | json}}
 </form>
+<!-- hw is login and register forms using template driven and todo app -->

@@ -14,3 +14,13 @@
     height: 100vh;
     flex-direction: column;
 }
+
+/* .ng-invalid .ng-dirty ye classes hai angular ke */
+/* .ng-dirty is form mei kuch toh enter krna fir bahar click krna  */
+.ng-invalid .ng-dirty{
+    border-color: red;
+}
+
+.ng-valid .ng-dirty{
+    border-color: blue !important;
+}
