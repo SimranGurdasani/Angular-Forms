@@ -1,0 +1,53 @@
+
+<form class="form" (ngSubmit)="submit()" [formGroup]="registerForm">
+     <div class="d-flex d-col">
+        <button type="button" (click)="setValuesToControls()">Set values</button>
+        <label for="username">Username</label>
+        <!-- for binding in reactive forms we use [formControl]="username"   -->
+         <!-- your formControlName should be same as name tag ...if not remove name attribute -->
+        <input class="form-control" type="text"  id="username" placeholder="Enter username..." name="username" formControlName="username" >
+        <p style="color: red;" *ngIf="getControl('username')?.touched && getControl('username')?.errors?.['required']">Username is required,please enter</p>
+        <p style="color: red;" *ngIf="getControl('username')?.errors?.['minlength'] && getControl('username')?.touched">Username is short</p>
+     </div> 
+     <!-- {{username.value}} -->
+     <div class="d-flex d-col">
+        <label for="email">Email</label>
+        <input class="form-control" type="text" id="email" name="email" formControlName="email"  placeholder="Enter email..."> 
+        <p style="color: red;" *ngIf="this.registerForm.get('email')?.touched && this.registerForm.get('email')?.errors?.['required']">Email is required</p>
+        <p style="color: red;" *ngIf="this.registerForm.get('email')?.touched && this.registerForm.get('email')?.errors?.['email']">Enter proper email</p>
+    </div>
+     
+    <div class="d-flex d-col ">
+        <div>
+            <label for="gender">Select Gender</label>
+        </div>
+        <div>
+            <input type="radio" id="gender" name="gender" formControlName="gender"  value="Male" >
+            <label for="gender" >Male</label>
+            <input type="radio" name="gender" value="Female" formControlName="gender"  id="gender">
+            <label for="gender">Female</label>
+        </div>
+    </div >
+
+    <div class="d-flex d-col">
+        <label for="address">Address</label>
+        <textarea class="form-control" type="text" rows="5" cols="40" id="address" name="address" formControlName="address" placeholder="Enter Address..."></textarea>
+       </div>
+     
+    <div class="d-flex d-col">
+    <label for="branch">Select Branch</label>
+    <!-- ye below is one way to give defaultSelectedValue but 2nd way(this is better) to create own JSON -->
+    <!-- <select id="branch" name="branch" [ngModel]="defaultSelectedValue" >  -->
+     <select id="branch" name="branch" formControlName="branch" >
+        <option value="CMPN">CMPN</option>
+        <option value="IT">IT</option>
+        <option value="EXTC">EXTC</option>
+        <option value="AIDS">AIDS</option>
+     </select>
+    </div>
+
+    {{registerForm.value | json}}
+
+     <button type="submit" class="btn btn-dark">Submit</button>
+</form>
+

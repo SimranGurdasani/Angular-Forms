@@ -6,7 +6,7 @@
     flex-direction: column;
 }
 
-.form{
+form{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +16,7 @@
 }
 
 /* .ng-invalid .ng-dirty ye classes hai angular ke */
-/* .ng-dirty is form mei kuch toh enter krna fir bahar click krna  */
+/* .ng-dirty is touch kiya aur form mei kuch toh enter kiya bale hi backspace kiya ho lekin touch krke likha na  */
 .ng-invalid .ng-dirty{
     border-color: red;
 }

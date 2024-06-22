@@ -3,14 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TemplateDrivenFormComponent } from './template-driven/template-driven-form/template-driven-form.component';
 import { TemplateDrivenModule } from './template-driven/template-driven.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { SignupFormComponent } from './template-driven/signup-form/signup-form.component';
+import { LoginFormComponent } from './template-driven/login-form/login-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveModule } from './reactive/reactive.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -18,7 +20,7 @@ import { FormsModule } from '@angular/forms';
     TemplateDrivenModule,
     NgbModule,
     NgbModule,
-
+    ReactiveModule
   ],
   providers: [],
   bootstrap: [AppComponent]

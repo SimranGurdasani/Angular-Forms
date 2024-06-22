@@ -1,0 +1,39 @@
+.wrapper{
+    height: 100vh;
+    background-color: #E3E3FF;
+}
+
+form{
+    background-color: #8787C5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+    /* height: 100vh; */
+    flex-direction: column;
+    width: 48%;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    height: 55%;
+}
+
+form div{
+    width: 85%;
+}
+
+#signup{
+    height: 18%;
+}
+
+.btn{
+    width: 85%;
+    border-radius: 30px;
+}
+
+.ng-dirty .ng-invalid{
+    border-color: red;
+}
+
+.ng-valid .ng-dirty{
+    border-color: green !important;
+}
