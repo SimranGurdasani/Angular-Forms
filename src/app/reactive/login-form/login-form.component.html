@@ -1,0 +1,14 @@
+<form class="form" [formGroup]="loginForm">
+    <div>
+    <label for="">Username</label>
+    <input type="text" placeholder="Username" name="username" formControlName="username" >
+    <p style="color: red;" *ngIf="getControl('username')?.touched && getControl('username')?.errors?.['required']">Username is required</p>
+    <p style="color: red;" *ngIf="getControl('username')?.touched && getControl('username')?.errors?.['minlength']">Enter proper username</p>
+    </div>
+
+    <div>
+        <label for="">Password</label>
+        <input type="password" name="password"  placeholder="password" formControlName="password">
+        <p style="color: red;" *ngIf="getControl('password')?.touched && getControl('password')?.errors?.['required']">Password is required</p>
+    </div>
+</form>

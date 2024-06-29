@@ -1,0 +1,26 @@
+<form class="form" [formGroup]="signupForm">
+    <div>
+    <label for="">Username</label>
+    <input type="text" placeholder="Username" name="username" formControlName="username" >
+    <p style="color: red;" *ngIf="getControl('username')?.touched && getControl('username')?.errors?.['required']">Username is required</p>
+    <p style="color: red;" *ngIf="getControl('username')?.touched && getControl('username')?.errors?.['minlength']">Enter proper username</p>
+    </div>
+
+    <div>
+        <label for="">Email</label>
+        <input type="text" placeholder="Email" formControlName="email">
+        <p style="color: red;" *ngIf="getControl('email')?.touched && getControl('email')?.errors?.['required']">Email is required</p>
+        <p style="color: red;" *ngIf="getControl('email')?.touched && getControl('email')?.errors?.['email']">Enter proper email</p>
+    </div>
+
+    <div>
+        <label for="">Password</label>
+        <input type="password" name="password"  placeholder="password" formControlName="password">
+        <p style="color: red;" *ngIf="getControl('password')?.touched && getControl('password')?.errors?.['required']">Password is required</p>
+    </div>
+
+    <div>
+        <label for="">Confirm Password</label>
+        <input type="password" name="confirmpwd"  placeholder="confirm password" formControlName="confirmpwd" >
+    </div>
+</form>
